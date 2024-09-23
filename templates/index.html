@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drought Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Drought Prediction</h1>
+        <form method="POST" action="/predict">
+            <div>
+                <label for="population">Population:</label>
+                <input type="number" id="population" name="population" step="any" required>
+            </div>
+            <div>
+                <label for="rain">Rain (in mm):</label>
+                <input type="number" id="rain" name="rain" step="any" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <h2>{{ prediction_text }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
